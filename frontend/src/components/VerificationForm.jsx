@@ -27,29 +27,44 @@ export default function VerificationForm({ onSubmit, isLoading }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="w-full">
-      <div className="mb-4">
-        <label htmlFor="mobile" className="block text-sm font-medium text-gray-700 mb-2">
-          Mobile Number
+    <form onSubmit={handleSubmit} className="w-100">
+      <div className="form-group">
+        <label htmlFor="mobile" className="form-label">
+          <i className="bi bi-telephone-fill me-2"></i> Mobile Number
         </label>
         <input
           id="mobile"
           type="tel"
           value={mobileNumber}
           onChange={handleChange}
-          placeholder="Enter your mobile number"
-          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition"
+          placeholder="Enter your 10-digit mobile number"
+          className="form-control form-control-lg"
           disabled={isLoading}
+          maxLength="15"
         />
-        {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+        {error && (
+          <div className="alert alert-danger mt-2 py-2 px-3 mb-0">
+            <i className="bi bi-exclamation-circle me-2"></i>
+            {error}
+          </div>
+        )}
       </div>
 
       <button
         type="submit"
         disabled={isLoading}
-        className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold py-3 rounded-lg hover:shadow-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
+        className="btn btn-primary btn-lg w-100 mt-4"
       >
-        {isLoading ? 'Verifying...' : 'Verify'}
+        {isLoading ? (
+          <>
+            <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            Verifying...
+          </>
+        ) : (
+          <>
+            <i className="bi bi-check-circle me-2"></i>Verify
+          </>
+        )}
       </button>
     </form>
   )

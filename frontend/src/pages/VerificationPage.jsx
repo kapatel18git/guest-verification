@@ -19,25 +19,40 @@ export default function VerificationPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md">
-        <h1 className="text-3xl font-bold text-center mb-2 text-gray-800">
-          Guest Verification
-        </h1>
-        <p className="text-center text-gray-600 mb-8">
-          Enter your mobile number to verify your invitation
-        </p>
-
-        <VerificationForm onSubmit={handleVerification} isLoading={loading} />
-
-        {apiError && (
-          <div className="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
-            {apiError}
+    <div className="min-vh-100 d-flex align-items-center justify-content-center py-4">
+      <div className="w-100 px-3" style={{ maxWidth: '500px' }}>
+        {/* Header */}
+        <div className="text-center mb-5">
+          <div className="mb-3">
+            <i className="bi bi-shield-check" style={{ fontSize: '3rem', color: '#009ef7' }}></i>
           </div>
-        )}
+          <h1 className="h2 fw-bold mb-2" style={{ color: '#2d3748' }}>
+            Guest Verification
+          </h1>
+          <p className="text-muted mb-0">
+            Enter your mobile number to verify your invitation
+          </p>
+        </div>
 
-        <div className="mt-8 pt-8 border-t border-gray-200">
-          <p className="text-xs text-gray-500 text-center">
+        {/* Card */}
+        <div className="card border-0">
+          <div className="card-body">
+            <VerificationForm onSubmit={handleVerification} isLoading={loading} />
+
+            {/* API Error */}
+            {apiError && (
+              <div className="alert alert-danger mt-4 mb-0">
+                <i className="bi bi-exclamation-triangle-fill me-2"></i>
+                {apiError}
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Footer Info */}
+        <div className="text-center mt-5">
+          <p className="text-muted small mb-0">
+            <i className="bi bi-lock-fill me-2"></i>
             We only collect your mobile number for verification purposes. Your data is secure.
           </p>
         </div>

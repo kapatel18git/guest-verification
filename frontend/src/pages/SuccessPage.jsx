@@ -6,46 +6,45 @@ export default function SuccessPage() {
   const mobileNumber = location.state?.mobileNumber
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md text-center">
-        <div className="mb-6">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full">
-            <svg
-              className="w-10 h-10 text-green-600"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M5 13l4 4L19 7"
-              />
-            </svg>
+    <div className="min-vh-100 d-flex align-items-center justify-content-center py-4">
+      <div className="w-100 px-3" style={{ maxWidth: '500px' }}>
+        {/* Success Icon */}
+        <div className="text-center mb-4">
+          <div className="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" 
+               style={{ width: '80px', height: '80px', backgroundColor: 'rgba(80, 205, 137, 0.15)' }}>
+            <i className="bi bi-check-circle-fill" style={{ fontSize: '2.5rem', color: '#50cd89' }}></i>
           </div>
         </div>
 
-        <h1 className="text-3xl font-bold text-gray-800 mb-2">Verified!</h1>
-        <p className="text-gray-600 mb-2">
-          Your mobile number has been verified successfully
-        </p>
-        {mobileNumber && (
-          <p className="text-sm text-gray-500 mb-6">
-            Number: {mobileNumber}
-          </p>
-        )}
+        {/* Card */}
+        <div className="card border-0">
+          <div className="card-body text-center">
+            <h1 className="h2 fw-bold mb-2" style={{ color: '#2d3748' }}>
+              Verified!
+            </h1>
+            <p className="text-muted mb-3">
+              Your mobile number has been verified successfully
+            </p>
+            
+            {mobileNumber && (
+              <div className="alert alert-info mb-4">
+                <strong>Mobile Number:</strong> {mobileNumber}
+              </div>
+            )}
 
-        <button
-          onClick={() => navigate('/')}
-          className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold py-3 rounded-lg hover:shadow-lg transition"
-        >
-          Verify Another Guest
-        </button>
+            <button
+              onClick={() => navigate('/')}
+              className="btn btn-primary btn-lg w-100 mb-3"
+            >
+              <i className="bi bi-arrow-repeat me-2"></i>Verify Another Guest
+            </button>
 
-        <p className="mt-6 text-xs text-gray-500">
-          Thank you for verifying. You're all set for the event!
-        </p>
+            <p className="text-muted small mb-0">
+              <i className="bi bi-star-fill me-2" style={{ color: '#ffc700' }}></i>
+              Thank you for verifying. You're all set for the event!
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   )
